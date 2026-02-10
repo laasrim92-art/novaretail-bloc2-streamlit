@@ -62,3 +62,12 @@ campaigns["taux_conversion"] = campaigns["conversions"] / campaigns["clicks"]
 campaigns["CPL"] = campaigns["cost"] / campaigns["conversions"]
 col2.metric("% MQL", f"{pct_mql:.0f}%")
 col5.metric("CPL moyen (€)", f"{campaigns['CPL'].mean():.1f}")
+st.subheader("📊 Répartition des leads par statut")
+
+fig, ax = plt.subplots()
+data["status"].value_counts().plot(kind="bar", ax=ax)
+ax.set_xlabel("Statut")
+ax.set_ylabel("Nombre de leads")
+ax.set_title("Distribution des leads dans le tunnel CRM")
+
+st.pyplot(fig)
